@@ -1,0 +1,97 @@
+{
+  "collection": "concept_learning",
+  "topic_id": 2001,
+  "topic_slug": "stack",
+  "documents": [
+    {
+      "id": "stack-2001-001",
+      "notion_id": 1,
+      "page_no": 1,
+      "title": "스택(Stack) 개념",
+      "img_url": "https://example.com/images/stack/stack-concept.png",
+      "tabs_order": ["point", "detail", "example_code"],
+      "tabs": {
+        "point": "스택은 LIFO(Last In, First Out) 구조로, 마지막에 넣은 데이터가 가장 먼저 나온다.",
+        "detail": "## 핵심 개념\n- **LIFO**: 나중에 들어온 데이터가 먼저 나간다.\n- **Top**: 삽입/삭제가 일어나는 위치.\n\n### 직관적 비유\n접시를 쌓아두면 맨 위 접시부터 꺼내는 것과 같다.",
+        "example_code": {
+          "language": "javascript",
+          "code": "const stack = [];\nstack.push('A');\nstack.push('B');\nconsole.log(stack.pop()); // B\nconsole.log(stack.pop()); // A"
+        }
+      },
+      "created_at": "2026-02-17T09:00:00Z",
+      "updated_at": "2026-02-17T09:00:00Z"
+    },
+    {
+      "id": "stack-2001-002",
+      "notion_id": 2,
+      "page_no": 2,
+      "title": "기본 연산: push / pop / peek",
+      "img_url": "https://example.com/images/stack/stack-operations.png",
+      "tabs_order": ["point", "detail", "example_code"],
+      "tabs": {
+        "point": "push는 top에 원소를 추가하고, pop은 top 원소를 제거 및 반환한다. peek은 top을 조회만 한다.",
+        "detail": "## 연산 설명\n- `push(x)`: 스택 맨 위에 x 추가\n- `pop()`: 스택 맨 위 원소 제거 후 반환\n- `peek()`: 제거 없이 맨 위 원소 확인\n\n### 시간복잡도\n일반적으로 각 연산은 **O(1)**",
+        "example_code": {
+          "language": "python",
+          "code": "stack = []\nstack.append(10)   # push\nstack.append(20)   # push\nprint(stack[-1])   # peek => 20\nprint(stack.pop()) # 20\nprint(stack.pop()) # 10"
+        }
+      },
+      "created_at": "2026-02-17T09:00:00Z",
+      "updated_at": "2026-02-17T09:00:00Z"
+    },
+    {
+      "id": "stack-2001-003",
+      "notion_id": 3,
+      "page_no": 3,
+      "title": "오버플로우와 언더플로우",
+      "img_url": "https://example.com/images/stack/stack-overflow-underflow.png",
+      "tabs_order": ["point", "detail", "example_code"],
+      "tabs": {
+        "point": "스택이 가득 찼을 때 push를 시도하면 오버플로우, 비어있을 때 pop을 시도하면 언더플로우가 발생한다.",
+        "detail": "## 예외 상황\n1. **Overflow**: 고정 크기 스택에서 용량 초과\n2. **Underflow**: 빈 스택에서 pop/peek 호출\n\n### 방지 방법\n- 연산 전에 `isFull()` / `isEmpty()` 검사\n- 필요 시 동적 크기 확장 전략 사용",
+        "example_code": {
+          "language": "javascript",
+          "code": "function safePop(stack) {\n  if (stack.length === 0) return 'UNDERFLOW';\n  return stack.pop();\n}\nconsole.log(safePop([])); // UNDERFLOW"
+        }
+      },
+      "created_at": "2026-02-17T09:00:00Z",
+      "updated_at": "2026-02-17T09:00:00Z"
+    },
+    {
+      "id": "stack-2001-004",
+      "notion_id": 4,
+      "page_no": 4,
+      "title": "구현 방식 비교",
+      "img_url": "https://example.com/images/stack/stack-implementation.png",
+      "tabs_order": ["point", "detail", "example_code"],
+      "tabs": {
+        "point": "스택은 배열 기반과 연결리스트 기반으로 구현할 수 있으며, 메모리 관리 방식이 다르다.",
+        "detail": "## 배열 기반\n- 장점: 캐시 친화적, 구현 단순\n- 단점: 재할당 비용 가능\n\n## 연결리스트 기반\n- 장점: 크기 제한이 유연\n- 단점: 포인터 오버헤드 존재",
+        "example_code": {
+          "language": "python",
+          "code": "# 배열 기반 스택\nstack = []\nstack.append('x')\nstack.append('y')\nprint(stack.pop())  # y"
+        }
+      },
+      "created_at": "2026-02-17T09:00:00Z",
+      "updated_at": "2026-02-17T09:00:00Z"
+    },
+    {
+      "id": "stack-2001-005",
+      "notion_id": 5,
+      "page_no": 5,
+      "title": "실전 활용 사례",
+      "img_url": "https://example.com/images/stack/stack-use-cases.png",
+      "tabs_order": ["point", "detail", "example_code"],
+      "tabs": {
+        "point": "괄호 검사, Undo/Redo, 브라우저 뒤로가기, DFS, 함수 호출 스택 등 다양한 분야에서 사용된다.",
+        "detail": "## 활용 예시\n- **괄호 유효성 검사**: 여는 괄호 push, 닫는 괄호에서 pop 매칭\n- **Undo/Redo**: 작업 이력 스택 관리\n- **DFS**: 깊이 우선 탐색에 스택 사용\n- **Call Stack**: 함수 호출/복귀 지점 관리",
+        "example_code": {
+          "language": "javascript",
+          "code": "function isValidParentheses(s) {\n  const st = [];\n  for (const ch of s) {\n    if (ch === '(') st.push(ch);\n    else if (ch === ')') {\n      if (!st.length) return false;\n      st.pop();\n    }\n  }\n  return st.length === 0;\n}"
+        }
+      },
+      "created_at": "2026-02-17T09:00:00Z",
+      "updated_at": "2026-02-17T09:00:00Z"
+    }
+  ]
+}
